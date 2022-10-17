@@ -33,5 +33,15 @@
         "id": 7,
         "name": "panda",
         "img": "img/panda.jpg"
+    },
+    {
+        "id": 8,
+        "name": "monkey",
+        "img": "img/monkey.jpg"
+    },
+    {
+        "id": 9,
+        "name": "lion",
+        "img": "img/lion.jpg"
     }
 ]

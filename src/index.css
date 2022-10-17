@@ -12,11 +12,13 @@ img {
 #test-container {
   background-color: plum;
   margin-bottom: 30px;
-
 }
 
 #container {
   display: flex;
+  align-items: center;
+  position: relative;
+  top: 18vh;
 }
 
 #container-list-animal {
@@ -28,6 +30,7 @@ img {
   flex-direction: column;
   flex-wrap: wrap;
   height: 50vh;
+  margin: 0 auto;
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -50,8 +53,7 @@ img {
 .random-animal-rule {
   font-weight: bolder;
   font-size: large;
-};
-
+}
 
 .animal-container {
   display: flex;
@@ -62,5 +64,5 @@ img {
 }
 
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }

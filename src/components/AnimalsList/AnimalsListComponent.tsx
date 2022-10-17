@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 import animals from "../../animals.json";
 import "../../index.css";
 import ScoreComponent from "../Score/ScoreComponent";
+import TimerComponent from "../Timer/TimerComponent";
 import {
   Action,
   AnimalProps,
@@ -10,6 +11,7 @@ import {
   ResultState,
   initialValue,
   resetAction,
+  timeoutAction,
 } from "./AnimalsList.type";
 
 const init = (initialValue: ResultState) => {
@@ -37,6 +39,13 @@ const AnimalsListComponent = () => {
     let newState;
 
     switch (action.type) {
+      case "TIMEOUT": 
+        newState = {
+          ...state,
+          message: "TIME OUT",
+          errors: state.errors - 1
+        }
+        break;
       case "INCREASE":
         newState = {
           score: state.score + 10,
@@ -51,19 +60,17 @@ const AnimalsListComponent = () => {
           message: "WRONG, -5pts",
           errors: state.errors - 1,
         };
-
-        if (newState.errors === 0 || newState.score < 0) {
-          newState.message = "GAME OVER";
-          setGameStatus("STOP");
-          setTimeout(() => dispatchResultState(resetAction), 1000);
-        }
         break;
       case "RESET":
         return init(initialValue);
       default:
         throw new Error(`action ${action.type} is unknown`);
     }
-
+    if (newState.errors === 0 || newState.score < 0) {
+      newState.message = "GAME OVER";
+      setGameStatus("STOP");
+      setTimeout(() => dispatchResultState(resetAction), 1000);
+    }
     return newState;
   };
 
@@ -78,7 +85,15 @@ const AnimalsListComponent = () => {
     setGameStatus("START");
   };
 
-  console.log({ gameStatus });
+  const handleTimerCallback = () => {
+    console.log('passed here')
+    let newResult = {...resultState};
+    console.log("newResult =>" , newResult, " previous result => ", resultState )
+    if (resultState.errors !== 0) {
+      dispatchResultState(timeoutAction);
+    }
+  }
+
   return (
     <div id="container">
       <div id="container-list-animal">
@@ -109,6 +124,7 @@ const AnimalsListComponent = () => {
           <button onClick={handleStartGame}>START GAME</button>
         ) : (
           <div>
+            <TimerComponent parentCallback={handleTimerCallback}/>
             <ScoreComponent
               score={resultState.score}
               errors={resultState.errors}
