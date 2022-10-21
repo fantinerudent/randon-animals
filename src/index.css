@@ -1,68 +1,50 @@
-.img-container {
-  height: 100px;
-  width: 100px;
-}
-
-img {
-  border-radius: 20px;
-  height: 100%;
-  width: 100%;
-}
-
-#test-container {
-  background-color: plum;
-  margin-bottom: 30px;
-}
-
 #container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  top: 18vh;
-}
-
-#container-list-animal {
-  align-items: center;
-  background-color: lightcoral;
-  border: lightgoldenrodyellow 3px solid;
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 50vh;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  width: 40%;
-}
-
-#container-random-animal {
-  position: relative;
-  background-color: rgb(131, 93, 169);
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
   height: fit-content;
+  width: 80vw;
+  border: 1px brown solid;
+  overflow: auto;
   margin: 0 auto;
-  padding: 30px;
-  border: 10px solid violet;
+  padding: 10px;
+  background-color: papayawhip;
+  border-radius: 10px;
+}
+#container-list-animal {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom: 10px;
+}
+.animal-container {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  background-color: white;
+  border: 1px pink dashed;
   border-radius: 20px;
 }
-
-.random-animal-rule {
-  font-weight: bolder;
-  font-size: large;
+img {
+  height: 10vh;
+  width: 10vh;
 }
-
-.animal-container {
-  display: flex;
-  flex-direction: column;
-  margin: 2px;
-  max-width: 200px;
-  position: relative;
-}
-
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-image: url(../public/img/background-paws.jpg);
+}
+#title {
+  color: darkred;
+  text-align: center;
+}
+#container-random-animal {
+  padding: 10px;
+  background-color: wheat;
+  display: flex;
+}
+.styled-button {
+  font-weight: bold;
+  margin: 0 auto;
+
+  padding: 10px;
+  background-color: pink;
+  border-radius: 10px;
 }

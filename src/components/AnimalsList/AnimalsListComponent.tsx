@@ -86,7 +86,6 @@ const AnimalsListComponent = () => {
   };
 
   const handleTimerCallback = () => {
-    console.log('passed here')
     let newResult = {...resultState};
     console.log("newResult =>" , newResult, " previous result => ", resultState )
     if (resultState.errors !== 0) {
@@ -121,7 +120,7 @@ const AnimalsListComponent = () => {
       </div>
       <div id="container-random-animal">
         {gameStatus === "STOP" ? (
-          <button onClick={handleStartGame}>START GAME</button>
+          <button className='styled-button' onClick={handleStartGame}>START GAME</button>
         ) : (
           <div>
             <TimerComponent parentCallback={handleTimerCallback}/>
