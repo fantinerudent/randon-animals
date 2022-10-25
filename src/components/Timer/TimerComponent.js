@@ -1,17 +1,26 @@
 import { useEffect, useState } from "react";
 
-const TimerComponent = ({parentCallback}) => {
+const TimerComponent = ({ parentCallback, resetTimer }) => {
   const [counter, setCounter] = useState(10);
+
   useEffect(() => {
-    if (counter !== 0 ) {
+    setCounter(10);
+  }, [resetTimer]);
+  
+  useEffect(() => {
+    if (counter !== 0) {
       const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
       return () => clearInterval(timer);
     }
     setCounter(10);
     return parentCallback();
   }, [counter, parentCallback]);
-  return <div id="timer-container">Timer: <span id='counter-style'>  {counter} </span></div>;
+  return (
+    <div id="timer-container">
+      Timer: <span id="counter-style"> {counter} </span>
+    </div>
+  );
 };
 
 export default TimerComponent;

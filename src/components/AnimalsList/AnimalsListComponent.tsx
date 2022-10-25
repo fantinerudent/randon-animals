@@ -52,7 +52,8 @@ const AnimalsListComponent = () => {
           message: "GOOD JOB, +10pts",
           errors: state.errors,
         };
-        setRandomAnimal(getRandomAnimal(1, animals.length));
+        setResetTimer(!resetTimer);
+        setRandomAnimal(getRandomAnimal(1, animals.length, randomAnimal));
         break;
       case "DECREASE":
         newState = {
@@ -60,6 +61,7 @@ const AnimalsListComponent = () => {
           message: "WRONG, -5pts",
           errors: state.errors - 1,
         };
+        setResetTimer(!resetTimer);
         break;
       case "RESET":
         return init(initialValue);
@@ -75,22 +77,22 @@ const AnimalsListComponent = () => {
   };
 
   const [gameStatus, setGameStatus] = useState("STOP");
+  const [resetTimer, setResetTimer] = useState<boolean>(false)
   const [randomAnimal, setRandomAnimal] = useState<AnimalProps>();
   const [resultState, dispatchResultState] = useReducer<
     React.Reducer<ResultState, Action>
   >(reducer, init(initialValue));
 
   const handleStartGame = () => {
-    setRandomAnimal(getRandomAnimal(1, animals.length));
+    setRandomAnimal(getRandomAnimal(1, animals.length, randomAnimal));
     setGameStatus("START");
   };
 
   const handleTimerCallback = () => {
-    let newResult = { ...resultState };
-    console.log("newResult =>", newResult, " previous result => ", resultState);
     if (resultState.errors !== 0) {
       dispatchResultState(timeoutAction);
     }
+    
   };
 
   return (
@@ -125,7 +127,7 @@ const AnimalsListComponent = () => {
           </button>
         ) : (
           <div id="side-container">
-            <TimerComponent parentCallback={handleTimerCallback} />
+            <TimerComponent parentCallback={handleTimerCallback} resetTimer={resetTimer}/>
             <ScoreComponent
               score={resultState.score}
               errors={resultState.errors}
