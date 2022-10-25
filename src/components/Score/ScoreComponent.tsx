@@ -28,11 +28,10 @@ const ScoreComponent = ({
     return value;
   };
   return (
-    <div id="test-container">
+    <div id="score-container">
       Your score : <strong> {score} </strong> points
       <br />
-      <br />
-      <span> lifes: {getLifes()} </span>
+      <span> Lifes: {getLifes()} </span>
     </div>
   );
 };

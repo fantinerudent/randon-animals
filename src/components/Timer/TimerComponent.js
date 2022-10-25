@@ -11,7 +11,7 @@ const TimerComponent = ({parentCallback}) => {
     setCounter(10);
     return parentCallback();
   }, [counter, parentCallback]);
-  return <div>Timer: {counter}</div>;
+  return <div id="timer-container">Timer: <span id='counter-style'>  {counter} </span></div>;
 };
 
 export default TimerComponent;

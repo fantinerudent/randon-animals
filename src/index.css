@@ -23,6 +23,9 @@
   border: 1px pink dashed;
   border-radius: 20px;
 }
+.animal-container:hover {
+    background-color: rgb(252, 239, 217);
+}
 img {
   height: 10vh;
   width: 10vh;
@@ -33,6 +36,11 @@ body {
 }
 #title {
   color: darkred;
+  background-color: white;
+  width:fit-content;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 20px;
   text-align: center;
 }
 #container-random-animal {
@@ -43,8 +51,38 @@ body {
 .styled-button {
   font-weight: bold;
   margin: 0 auto;
-
   padding: 10px;
   background-color: pink;
   border-radius: 10px;
+}
+#rules-container {
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+#side-container {
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+}
+#counter-style {
+  background-color: white;
+  border: 1px black solid;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+#img-container-rules {
+  display: flex;
+  flex-direction: column;
+}
+#timer-container {
+  margin: 10px;
+}
+#score-container {
+  margin: 10px;
 }

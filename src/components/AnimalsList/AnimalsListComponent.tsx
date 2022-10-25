@@ -39,12 +39,12 @@ const AnimalsListComponent = () => {
     let newState;
 
     switch (action.type) {
-      case "TIMEOUT": 
+      case "TIMEOUT":
         newState = {
           ...state,
           message: "TIME OUT",
-          errors: state.errors - 1
-        }
+          errors: state.errors - 1,
+        };
         break;
       case "INCREASE":
         newState = {
@@ -86,12 +86,12 @@ const AnimalsListComponent = () => {
   };
 
   const handleTimerCallback = () => {
-    let newResult = {...resultState};
-    console.log("newResult =>" , newResult, " previous result => ", resultState )
+    let newResult = { ...resultState };
+    console.log("newResult =>", newResult, " previous result => ", resultState);
     if (resultState.errors !== 0) {
       dispatchResultState(timeoutAction);
     }
-  }
+  };
 
   return (
     <div id="container">
@@ -120,22 +120,26 @@ const AnimalsListComponent = () => {
       </div>
       <div id="container-random-animal">
         {gameStatus === "STOP" ? (
-          <button className='styled-button' onClick={handleStartGame}>START GAME</button>
+          <button className="styled-button" onClick={handleStartGame}>
+            START GAME
+          </button>
         ) : (
-          <div>
-            <TimerComponent parentCallback={handleTimerCallback}/>
+          <div id="side-container">
+            <TimerComponent parentCallback={handleTimerCallback} />
             <ScoreComponent
               score={resultState.score}
               errors={resultState.errors}
             />
-            <span className="random-animal-rule"> CLICK ON : </span>
-            <br />
-            <div className="img-container">
-              <img
-                src={randomAnimal?.img}
-                alt={`${randomAnimal?.name} kawaii drawing`}
+            <div id="rules-container">
+              <span className="random-animal-rule"> CLICK ON : </span>
+              <br />
+              <div id="img-container-rules">
+                <img
+                  src={randomAnimal?.img}
+                  alt={`${randomAnimal?.name} kawaii drawing`}
                 />
                 {randomAnimal?.name}
+              </div>
             </div>
           </div>
         )}
